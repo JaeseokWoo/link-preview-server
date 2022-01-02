@@ -1,4 +1,5 @@
 const express = require("express");
+const getMeatadata = require('./getMetadata');
 
 const previewRouter = express.Router();
 
