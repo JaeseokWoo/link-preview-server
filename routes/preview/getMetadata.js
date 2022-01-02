@@ -27,7 +27,7 @@ const getTitle = (dom) => {
 
 const getDescription = (dom) => {
     const ogDescription = dom.querySelector('meta[property="og:description"]');
-    if (ogDescription !== null) {
+    if (ogDescription) {
       const content = ogDescription.getAttribute("content");
       if (content) {
         return content;
@@ -37,7 +37,7 @@ const getDescription = (dom) => {
     const twitterDescription = dom.querySelector(
       'meta[name="twitter:description"]'
     );
-    if (twitterDescription !== null) {
+    if (twitterDescription) {
       const content = twitterDescription.getAttribute("content");
       if (content) {
         return content;
@@ -50,6 +50,37 @@ const getDescription = (dom) => {
         if (content) {
             return content;
         }
+    }
+    return null;
+  };
+
+  const getImg = (dom, url) => {
+    const ogImg = dom.querySelector('meta[property="og:image"]');
+    if (ogImg) {
+        const content = ogImg.getAttribute('content');
+        if (content) {
+            return content;
+        }
+    }
+
+    const imgRelLink = dom.querySelector('link[rel="image_src"]');
+
+    const twitterImg = dom.querySelector('meta[name="twitter:image"]');
+    if (twitterImg) {
+        const content = twitterImg.getAttribute('content');
+        if (content) {
+            return content;
+        }
+    }
+
+    const imgs = dom.querySelectorAll('img').reduce((acc, el) => {
+        const src = el.getAttribute('src');
+        if (!src) return acc;
+        acc.push(new URL(src, url).href);
+        return acc;
+    }, []);
+    if (imgs.length) {
+        return imgs[0];
     }
     return null;
   };
@@ -67,8 +98,9 @@ const getMetadata = async (url) => {
 
     const title = getTitle(html);
     const description = getDescription(html);
+    const img = getImg(html, url);
 
-    return { title, description };
+    return { title, description, img };
   } catch (error) {
     console.error(error);
     return null;
