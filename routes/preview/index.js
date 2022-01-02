@@ -1,5 +1,6 @@
-import { Router } from "express";
+const express = require("express");
 
-const previewRouter = Router();
+
+const previewRouter = express.Router();
 
 module.exports = previewRouter;

@@ -1,7 +1,7 @@
-import express from "express";
-import morgan from "morgan";
+const express = require("express");
+const morgan = require("morgan");
 
-import previewRouter from "./routes/preview/index.js";
+const previewRouter = require("./routes/preview/index.js");
 
 const app = express();
 app.set("port", process.env.PORT || 5000);
