@@ -96,6 +96,26 @@ const getDescription = (dom) => {
     return null;
   };
 
+  const getDomain  = (dom, url) => {
+    const canonical = dom.querySelector("link[rel=canonical]");
+    if (canonical) {
+      const href = canonical.getAttribute('href');
+      if (href) {
+        return new URL(href).hostname.replace("www.", "");;
+      }
+    }
+
+    const ogUrl = dom.querySelector('meta[property="og:url"]');
+    if (ogUrl) {
+      const content = ogUrl.getAttribute('content');
+      if (content) {
+        return new URL(content).hostname.replace("www.", "");;
+      }
+    }
+
+    return new URL(url).hostname.replace("www.", "");;
+  }
+
 const config = {
   headers: {
     "Accept-Encoding": "gzip,deflate,br",
@@ -110,8 +130,9 @@ const getMetadata = async (url) => {
     const title = getTitle(html);
     const description = getDescription(html);
     const img = getImg(html, url);
+    const domain = getDomain(html, url);
 
-    return { title, description, img };
+    return { title, description, img, domain };
   } catch (error) {
     console.error(error);
     return null;
