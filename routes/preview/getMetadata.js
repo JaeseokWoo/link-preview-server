@@ -63,8 +63,6 @@ const getDescription = (dom) => {
         }
     }
 
-    const imgRelLink = dom.querySelector('link[rel="image_src"]');
-
     const twitterImg = dom.querySelector('meta[name="twitter:image"]');
     if (twitterImg) {
         const content = twitterImg.getAttribute('content');
