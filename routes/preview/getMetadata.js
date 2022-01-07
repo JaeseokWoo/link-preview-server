@@ -22,6 +22,19 @@ const getTitle = (dom) => {
   if (title) {
     return title.text;
   }
+
+  const h1 = dom.querySelector("h1");
+  if(h1 !== null) {
+    const text = h1.innerText;
+    if(text) return text.trim();
+  }
+
+  const h2 = dom.querySelector("h2");
+  if (h2 !== null) {
+    const text = h2.innerText;
+    if(text) return text.trim();
+  }
+
   return null;
 };
 
