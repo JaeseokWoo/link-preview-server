@@ -2,6 +2,7 @@ const express = require("express");
 const morgan = require("morgan");
 
 const previewRouter = require("./routes/preview/index.js");
+const { makeResponse } = require('./utills');
 
 const app = express();
 app.set("port", process.env.PORT || 5000);
@@ -12,7 +13,7 @@ app.use(express.urlencoded({ extended: false }));
 app.use("/preview", previewRouter);
 
 app.use((req, res, next) => {
-  const error = new Error(`${req.method} ${req.url} 라우터가 없습니다.`);
+  const error = new Error(`${req.method} ${req.url} There is no router.`);
   error.status = 404;
   next(error);
 });
@@ -20,10 +21,10 @@ app.use((req, res, next) => {
 app.use((err, req, res, next) => {
   const status = err.status || 500;
   const message = err.message;
-  res.status(status).send({
-    status,
-    message,
-  });
+  res.status(status).send(makeResponse({
+    resultCode: -1,
+    resultMessage: message,
+  }));
 });
 
 app.listen(app.get("port"), () => {
