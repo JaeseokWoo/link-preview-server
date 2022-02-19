@@ -4,10 +4,11 @@
   "description": "",
   "main": "server.js",
   "scripts": {
-    "start": "./node_modules/typescript/bin/tsc && npm run start:prod",
+    "start": "npm run tsc && npm run start:prod",
     "start:dev": "nodemon",
     "start:prod": "node -r ts-node/register/transpile-only -r tsconfig-paths/register ./dist/src/server.js",
-    "build": "tsc"
+    "build": "tsc",
+    "tsc": "tsc"
   },
   "author": "JaeseokWoo",
   "license": "MIT",
