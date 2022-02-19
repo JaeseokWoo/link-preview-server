@@ -22,6 +22,7 @@ module.exports = {
     'prettier/prettier': 'error',
     'import/extensions': 'off',
     'no-console': 'off',
+    'no-unused-vars': ['error', { args: 'none' }],
     'import/order': [
       'error',
       {
