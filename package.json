@@ -4,11 +4,12 @@
   "description": "",
   "main": "server.js",
   "scripts": {
-    "start": "npm run tsc && npm run start:prod",
+    "start": "npm run start:prod",
     "start:dev": "nodemon",
     "start:prod": "node -r ts-node/register/transpile-only -r tsconfig-paths/register ./dist/src/server.js",
     "build": "tsc",
-    "tsc": "tsc"
+    "postinstall": "tsc",
+    "deploy": "git add . && git commit -m Heroku && git push heroku master"
   },
   "author": "JaeseokWoo",
   "license": "MIT",
@@ -35,5 +36,8 @@
     "ts-node": "^10.5.0",
     "tsconfig-paths": "^3.12.0",
     "typescript": "^4.5.5"
+  },
+  "engines": {
+    "node": "14.17.3"
   }
 }
