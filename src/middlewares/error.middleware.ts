@@ -1,5 +1,5 @@
 import { ErrorRequestHandler } from 'express';
-import HttpException from '../common/exceptions/http.exception';
+import HttpException from '@src/common/exceptions/http.exception';
 
 const errorMiddleware: ErrorRequestHandler = (
   err: HttpException,
