@@ -31,7 +31,7 @@ export default class LinkPreviewController implements Controller {
         throw new BadRequestException('You did not specify a URL.');
       }
 
-      const metadata = this.linkPreviewService.getMetadata(url);
+      const metadata = await this.linkPreviewService.getMetadata(url);
 
       res.status(200).json({ data: metadata });
     } catch (error) {
