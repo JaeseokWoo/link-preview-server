@@ -11,7 +11,6 @@ const errorMiddleware: ErrorRequestHandler = (
   const { message } = err;
 
   res.status(status).json({
-    status,
     message,
   });
 
