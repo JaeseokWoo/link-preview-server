@@ -1,7 +1,12 @@
 import React from 'react';
+import Search from './search/container/Search';
 
 function App() {
-  return <div className="App">test</div>;
+  return (
+    <div className="App">
+      <Search />
+    </div>
+  );
 }
 
 export default App;

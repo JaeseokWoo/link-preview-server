@@ -9,6 +9,7 @@ module.exports = {
     'airbnb',
     'eslint:recommended',
     'plugin:@typescript-eslint/recommended',
+    'airbnb-base',
     'plugin:prettier/recommended',
     'plugin:import/errors',
     'plugin:import/warnings',
@@ -30,6 +31,14 @@ module.exports = {
     'react/jsx-filename-extension': [
       2,
       { extensions: ['.js', '.jsx', '.ts', '.tsx'] },
+    ],
+    'react/jsx-no-bind': [
+      0,
+      {
+        ignoreRefs: false,
+        allowArrowFunctions: false,
+        allowBind: true,
+      },
     ],
   },
   settings: {

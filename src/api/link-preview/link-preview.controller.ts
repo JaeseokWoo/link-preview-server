@@ -35,6 +35,7 @@ export default class LinkPreviewController implements Controller {
 
       res.status(200).json({ data: metadata });
     } catch (error) {
+      console.error(error);
       next(error);
     }
   };
