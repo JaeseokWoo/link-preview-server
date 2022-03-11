@@ -10,10 +10,13 @@ export default function Search() {
     setUrl(event.target.value);
   }
 
-  function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
+  async function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
-    const data = new FormData(event.currentTarget);
-    console.log(data.get('url'));
+    const res = await fetch(
+      `http://localhost:5000/api/link-preview/?url=${url}`
+    );
+    const metadata = await res.json();
+    console.log(metadata);
   }
 
   return (
