@@ -1,24 +1,12 @@
 import React, { useState } from 'react';
 import Box from '@mui/material/Box';
-import TextField from '@mui/material/TextField';
-import { Button, Container, Typography } from '@mui/material';
+import Container from '@mui/material/Container';
+import Typography from '@mui/material/Typography';
+import SearchInput from './SearchInput';
+import LinkPreview, { Metadata } from '../component/LinkPreview';
 
 export default function Search() {
-  const [url, setUrl] = useState('');
-
-  function setKeyword(event: React.ChangeEvent<HTMLInputElement>) {
-    setUrl(event.target.value);
-  }
-
-  async function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
-    event.preventDefault();
-    const res = await fetch(
-      `http://localhost:5000/api/link-preview/?url=${url}`
-    );
-    const metadata = await res.json();
-    console.log(metadata);
-  }
-
+  const [metadata, setMetadata] = useState<null | Metadata>(null);
   return (
     <Container component="main">
       <Box
@@ -31,27 +19,8 @@ export default function Search() {
         <Typography component="h1" variant="h3" sx={{ textAlign: 'center' }}>
           Link Preview
         </Typography>
-        <Box
-          component="form"
-          onSubmit={handleSubmit}
-          sx={{ display: 'flex', mt: 1 }}
-        >
-          <TextField
-            margin="normal"
-            required
-            fullWidth
-            id="url"
-            name="url"
-            label="URL"
-            value={url}
-            onChange={setKeyword}
-            autoFocus
-            sx={{ flexGrow: 1, m: 1 }}
-          />
-          <Button type="submit" variant="contained" sx={{ m: 1 }}>
-            Get!
-          </Button>
-        </Box>
+        <SearchInput setMetadata={setMetadata} />
+        {metadata && <LinkPreview metadata={metadata} />}
       </Box>
     </Container>
   );
