@@ -37,8 +37,6 @@ class App {
   private initializeControllers(controllers: Controller[]) {
     const router = Router();
 
-    router.get('/', (req, res) => res.send('OK'));
-
     controllers.forEach(controller => {
       router.use(controller.router);
     });
