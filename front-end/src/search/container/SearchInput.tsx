@@ -21,7 +21,7 @@ export default function SearchInput({
     );
     const metadata = await res.json();
     console.log(metadata);
-    setMetadata(metadata.data);
+    setMetadata(metadata);
   }
 
   return (
