@@ -1,4 +1,9 @@
 import React from 'react';
+import Card from '@mui/material/Card';
+import CardContent from '@mui/material/CardContent';
+import CardMedia from '@mui/material/CardMedia';
+import Typography from '@mui/material/Typography';
+import { CardActionArea } from '@mui/material';
 
 export type Metadata = {
   title: string | undefined;
@@ -10,11 +15,21 @@ export type Metadata = {
 export default function LinkPreview({ metadata }: { metadata: Metadata }) {
   const { title, description, domain, img } = metadata;
   return (
-    <>
-      <h4>{title}</h4>
-      <p>{description}</p>
-      <p>{domain}</p>
-      <img src={img} alt={title} style={{ width: 70 }} />
-    </>
+    <Card sx={{ maxWidth: 345 }}>
+      <CardActionArea>
+        <CardMedia component="img" height="140" image={img} alt={title} />
+        <CardContent>
+          <Typography gutterBottom variant="h5" component="div">
+            {title}
+          </Typography>
+          <Typography variant="body2" color="text.secondary">
+            {description}
+          </Typography>
+          <Typography variant="caption" color="text.secondary">
+            {domain}
+          </Typography>
+        </CardContent>
+      </CardActionArea>
+    </Card>
   );
 }
