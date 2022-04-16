@@ -18,7 +18,7 @@ const parseDescription = (html: HTMLElement) => {
     return metaDescription.getAttribute('content');
   }
 
-  return null;
+  return '';
 };
 
 export default parseDescription;

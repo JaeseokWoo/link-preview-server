@@ -4,20 +4,26 @@ import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import Typography from '@mui/material/Typography';
 import { CardActionArea } from '@mui/material';
+import logo from '../../assets/logo.png';
 
 export type Metadata = {
-  title: string | undefined;
-  description: string | undefined;
-  img: string | undefined;
-  domain: string | undefined;
+  title: string;
+  description: string;
+  img: string | null;
+  domain: string;
 };
 
 export default function LinkPreview({ metadata }: { metadata: Metadata }) {
   const { title, description, domain, img } = metadata;
   return (
     <Card sx={{ maxWidth: 345 }}>
-      <CardActionArea>
-        <CardMedia component="img" height="140" image={img} alt={title} />
+      <CardActionArea href={domain}>
+        <CardMedia
+          component="img"
+          height="140"
+          image={img || logo}
+          alt={title}
+        />
         <CardContent>
           <Typography gutterBottom variant="h5" component="div">
             {title}
