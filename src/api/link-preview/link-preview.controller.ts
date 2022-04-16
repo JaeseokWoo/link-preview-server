@@ -33,7 +33,7 @@ export default class LinkPreviewController implements Controller {
 
       const metadata = await this.linkPreviewService.getMetadata(url);
 
-      res.status(200).json({ data: metadata });
+      res.status(200).json(metadata);
     } catch (error) {
       console.error(error);
       next(error);
