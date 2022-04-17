@@ -16,7 +16,7 @@ export type Metadata = {
 export default function LinkPreview({ metadata }: { metadata: Metadata }) {
   const { title, description, domain, img } = metadata;
   return (
-    <Card sx={{ maxWidth: 345 }}>
+    <Card sx={{ maxWidth: 345, m: 2 }}>
       <CardActionArea href={domain}>
         <CardMedia
           component="img"
