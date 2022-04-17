@@ -3,8 +3,8 @@ import Box from '@mui/material/Box';
 import Container from '@mui/material/Container';
 import Typography from '@mui/material/Typography';
 import SearchInput from './SearchInput';
-import LinkPreview, { Metadata } from '../component/LinkPreview';
-import Response from '../component/Response';
+import Result from './Result';
+import { Metadata } from '../component/LinkPreview';
 
 export default function Search() {
   const [metadata, setMetadata] = useState<null | Metadata>(null);
@@ -21,8 +21,7 @@ export default function Search() {
           Link Preview
         </Typography>
         <SearchInput setMetadata={setMetadata} />
-        {metadata && <LinkPreview metadata={metadata} />}
-        {metadata && <Response metadata={metadata} />}
+        {metadata && <Result metadata={metadata} />}
       </Box>
     </Container>
   );
