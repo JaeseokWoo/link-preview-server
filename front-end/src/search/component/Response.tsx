@@ -2,14 +2,19 @@ import React from 'react';
 import { TextField } from '@mui/material';
 
 export type Metadata = {
-  title: string;
-  description: string;
+  title: string | null;
+  description: string | null;
   img: string | null;
-  domain: string;
+  domain: string | null;
 };
 
 export default function Response({ metadata }: { metadata: Metadata }) {
   return (
-    <TextField disabled multiline defaultValue={JSON.stringify(metadata)} />
+    <TextField
+      disabled
+      fullWidth
+      multiline
+      value={JSON.stringify(metadata).replaceAll(',', ',\n')}
+    />
   );
 }

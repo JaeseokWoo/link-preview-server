@@ -26,7 +26,7 @@ const parseTitle = (html: HTMLElement) => {
     return h2.innerText.trim();
   }
 
-  return '';
+  return null;
 };
 
 export default parseTitle;

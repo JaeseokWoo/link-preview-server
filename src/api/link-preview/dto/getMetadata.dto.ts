@@ -3,8 +3,8 @@ export interface GetMetadataDto {
 }
 
 export type GetMetadataResponse = {
-  title: string;
-  description: string;
+  title: string | null;
+  description: string | null;
   img: string | null;
-  domain: string;
+  domain: string | null;
 };
