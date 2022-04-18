@@ -11,13 +11,14 @@ export type Metadata = {
   description: string | null;
   img: string | null;
   domain: string;
+  requestUrl: string;
 };
 
 export default function LinkPreview({ metadata }: { metadata: Metadata }) {
-  const { title, description, domain, img } = metadata;
+  const { title, description, domain, img, requestUrl } = metadata;
   return (
     <Card sx={{ maxWidth: 345, m: 2 }}>
-      <CardActionArea href={domain}>
+      <CardActionArea href={requestUrl}>
         <CardMedia
           component="img"
           height="140"
