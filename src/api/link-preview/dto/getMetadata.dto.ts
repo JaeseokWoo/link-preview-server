@@ -7,4 +7,5 @@ export type GetMetadataResponse = {
   description: string | null;
   img: string | null;
   domain: string | null;
+  requestUrl: string;
 };

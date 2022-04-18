@@ -34,7 +34,7 @@ class LinkPreviewService {
     const img = parseImg(html, url);
     const domain = parseDomain(html, url);
 
-    return { title, description, img, domain };
+    return { title, description, img, domain, requestUrl: requestedUrl };
   }
 }
 
