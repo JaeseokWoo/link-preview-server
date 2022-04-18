@@ -6,8 +6,7 @@
   "scripts": {
     "start:dev": "nodemon",
     "start:prod": "node -r ts-node/register/transpile-only -r tsconfig-paths/register ./dist/src/server.js",
-    "build": "tsc",
-    "heroku-postbuild": "cd front-end && npm install && npm run build",
+    "build": "tsc && cd front-end && npm install && npm run build",
     "postinstall": "tsc",
     "deploy": "git add . && git commit -m Heroku && git push heroku main"
   },
