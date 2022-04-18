@@ -1,4 +1,5 @@
 import express, { Router } from 'express';
+import path from 'path';
 import cors from 'cors';
 import { Controller } from './common/interfaces/controller.interface';
 import errorMiddleware from './middlewares/error.middleware';
@@ -27,6 +28,10 @@ class App {
 
   private initializeMiddlewares() {
     this.app.use(cors());
+    this.app.use(
+      '/',
+      express.static(path.join(__dirname, '../front-end/build'))
+    );
     this.app.use(express.json());
   }
 
