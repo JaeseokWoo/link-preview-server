@@ -28,7 +28,7 @@ class App {
 
   private initializeMiddlewares() {
     this.app.use(cors());
-    this.app.use(express.static(path.join(__dirname, 'build')));
+    this.app.use(express.static(path.join(__dirname, '../../front-end/build')));
     this.app.use(express.json());
   }
 
