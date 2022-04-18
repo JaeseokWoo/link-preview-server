@@ -2,26 +2,20 @@ import React, { useState } from 'react';
 import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
-import { Metadata } from '../component/LinkPreview';
 
 export default function SearchInput({
-  setMetadata,
+  setUrl,
 }: {
-  setMetadata: React.Dispatch<React.SetStateAction<Metadata | null>>;
+  setUrl: React.Dispatch<React.SetStateAction<string>>;
 }) {
-  const [url, setUrl] = useState('');
+  const [currentText, setCurrentText] = useState('');
   function setKeyword(event: React.ChangeEvent<HTMLInputElement>) {
-    setUrl(event.target.value);
+    setCurrentText(event.target.value);
   }
 
   async function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
-    const res = await fetch(
-      `http://localhost:5000/api/link-preview/?url=${url}`
-    );
-    const metadata = await res.json();
-    console.log(metadata);
-    setMetadata(metadata);
+    setUrl(currentText);
   }
 
   return (
@@ -37,7 +31,7 @@ export default function SearchInput({
         id="url"
         name="url"
         label="URL"
-        value={url}
+        value={currentText}
         onChange={setKeyword}
         autoFocus
         sx={{ flexGrow: 1, m: 1 }}

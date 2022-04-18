@@ -4,10 +4,9 @@ import Container from '@mui/material/Container';
 import Typography from '@mui/material/Typography';
 import SearchInput from './SearchInput';
 import Result from './Result';
-import { Metadata } from '../component/LinkPreview';
 
 export default function Search() {
-  const [metadata, setMetadata] = useState<null | Metadata>(null);
+  const [url, setUrl] = useState<string>('');
   return (
     <Container component="main">
       <Box
@@ -20,8 +19,8 @@ export default function Search() {
         <Typography component="h1" variant="h3" sx={{ textAlign: 'center' }}>
           Link Preview
         </Typography>
-        <SearchInput setMetadata={setMetadata} />
-        {metadata && <Result metadata={metadata} />}
+        <SearchInput setUrl={setUrl} />
+        {url && <Result url={url} />}
       </Box>
     </Container>
   );
