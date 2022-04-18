@@ -30,7 +30,7 @@ class App {
     this.app.use(cors());
     this.app.use(
       '/',
-      express.static(path.join(__dirname, '../front-end/build'))
+      express.static(path.resolve(__dirname, '../front-end/build'))
     );
     this.app.use(express.json());
   }
