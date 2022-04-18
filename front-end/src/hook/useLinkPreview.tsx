@@ -12,6 +12,8 @@ export default function useLinkPreview(url: string) {
   const [metadata, setMetadata] = useState<null | Metadata>(null);
 
   useEffect(() => {
+    setError(null);
+    setMetadata(null);
     getMetadata(url)
       .then(res => {
         setMetadata(res);
