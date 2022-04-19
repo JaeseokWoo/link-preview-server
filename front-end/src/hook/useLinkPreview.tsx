@@ -1,8 +1,11 @@
 import { useState, useEffect } from 'react';
 import { Metadata } from '../search/component/LinkPreview';
 
+const LINK_PRECIEW_SERVER_API =
+  'https://js-linkpreview.herokuapp.com/api/link-preview/?url=';
+
 async function getMetadata(url: string) {
-  const res = await fetch(`http://localhost:5000/api/link-preview/?url=${url}`);
+  const res = await fetch(LINK_PRECIEW_SERVER_API + url);
   const metadata = await res.json();
   return metadata;
 }
