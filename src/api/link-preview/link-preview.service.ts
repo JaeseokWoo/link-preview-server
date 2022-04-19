@@ -1,4 +1,5 @@
-import axios, { Axios } from 'axios';
+// import axios, { Axios } from 'axios';
+import fetch, { RequestInfo, RequestInit, Response } from 'node-fetch';
 import parser from 'node-html-parser';
 import {
   parseTitle,
@@ -7,15 +8,20 @@ import {
   parseDomain,
 } from '@src/common/parse';
 
-const config = {
-  headers: {},
-};
+// const config = {
+//   headers: {
+//     'Accept-Encoding': '',
+//   },
+// };
 
 class LinkPreviewService {
-  request: Axios;
+  request: (
+    url: RequestInfo,
+    init?: RequestInit | undefined
+  ) => Promise<Response>;
 
   constructor() {
-    this.request = axios.create(config);
+    this.request = fetch;
   }
 
   async getMetadata(requestedUrl: string) {
@@ -24,8 +30,11 @@ class LinkPreviewService {
         ? `http://${requestedUrl}`
         : requestedUrl;
 
-    const { data } = await this.request.get(url, config);
-    const html = parser(data);
+    // const { data } = await this.request.get(url, config);
+    // const html = parser(data);
+    const response = await this.request(url);
+    const body = await response.text();
+    const html = parser(body);
 
     const title = parseTitle(html);
     const description = parseDescription(html);
