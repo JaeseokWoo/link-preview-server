@@ -8,9 +8,7 @@ import {
 } from '@src/common/parse';
 
 const config = {
-  headers: {
-    'Accept-Encoding': 'gzip,deflate,br',
-  },
+  headers: {},
 };
 
 class LinkPreviewService {
@@ -26,7 +24,7 @@ class LinkPreviewService {
         ? `http://${requestedUrl}`
         : requestedUrl;
 
-    const { data } = await this.request.get(url);
+    const { data } = await this.request.get(url, config);
     const html = parser(data);
 
     const title = parseTitle(html);
