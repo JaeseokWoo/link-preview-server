@@ -4,8 +4,14 @@ import { Metadata } from '../search/component/LinkPreview';
 const LINK_PRECIEW_SERVER_API =
   'https://js-linkpreview.herokuapp.com/api/link-preview/?url=';
 
+const config = {
+  headers: {
+    Accept: 'application/json',
+  },
+};
+
 async function getMetadata(url: string) {
-  const res = await fetch(LINK_PRECIEW_SERVER_API + url);
+  const res = await fetch(LINK_PRECIEW_SERVER_API + url, config);
   const metadata = await res.json();
   return metadata;
 }
