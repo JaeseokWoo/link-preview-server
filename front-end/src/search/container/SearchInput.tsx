@@ -31,6 +31,7 @@ export default function SearchInput({
         id="url"
         name="url"
         label="URL"
+        type="url"
         value={currentText}
         onChange={setKeyword}
         autoFocus
