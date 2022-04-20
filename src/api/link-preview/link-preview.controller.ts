@@ -28,7 +28,7 @@ export default class LinkPreviewController implements Controller {
     try {
       const { url } = req.query as unknown as GetMetadataDto;
       if (!url) {
-        throw new BadRequestException('You did not specify a URL.');
+        throw new BadRequestException('not a valid url');
       }
 
       const metadata = await this.linkPreviewService.getMetadata(url);

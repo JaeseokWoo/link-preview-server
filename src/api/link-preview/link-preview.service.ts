@@ -6,6 +6,8 @@ import {
   parseImg,
   parseDomain,
 } from '@src/common/parse';
+import urlValidator from '@src/common/validator/url';
+import BadRequestException from '@src/common/exceptions/bad-request.exception';
 
 class LinkPreviewService {
   request: (
@@ -23,6 +25,9 @@ class LinkPreviewService {
         ? `http://${requestedUrl}`
         : requestedUrl;
 
+    if (!urlValidator(url)) {
+      throw new BadRequestException('not a valid url');
+    }
     const response = await this.request(url);
     const body = await response.text();
     const html = parser(body);
