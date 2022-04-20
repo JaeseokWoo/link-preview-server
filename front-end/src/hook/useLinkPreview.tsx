@@ -28,8 +28,9 @@ export default function useLinkPreview(url: string) {
         const { resultCode, resultMessage, data } = res;
         if (resultCode < 0) {
           setError(new Error(resultMessage));
+        } else {
+          setMetadata(data);
         }
-        setMetadata(data);
       })
       .catch(err => {
         setError(err);
