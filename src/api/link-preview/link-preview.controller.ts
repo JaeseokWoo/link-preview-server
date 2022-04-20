@@ -1,6 +1,7 @@
 import { NextFunction, Request, Response, Router } from 'express';
 import { Controller } from '@src/common/interfaces/controller.interface';
 import BadRequestException from '@src/common/exceptions/bad-request.exception';
+import makeResponse from '@src/common/response';
 import LinkPreviewService from './link-preview.service';
 import { GetMetadataDto } from './dto/getMetadata.dto';
 
@@ -33,7 +34,7 @@ export default class LinkPreviewController implements Controller {
 
       const metadata = await this.linkPreviewService.getMetadata(url);
 
-      res.status(200).json(metadata);
+      res.status(200).json(makeResponse({ data: metadata }));
     } catch (error) {
       console.error(error);
       next(error);

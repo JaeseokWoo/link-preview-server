@@ -25,7 +25,11 @@ export default function useLinkPreview(url: string) {
     setMetadata(null);
     getMetadata(url)
       .then(res => {
-        setMetadata(res);
+        const { resultCode, resultMessage, data } = res;
+        if (resultCode < 0) {
+          setError(new Error(resultMessage));
+        }
+        setMetadata(data);
       })
       .catch(err => {
         setError(err);
