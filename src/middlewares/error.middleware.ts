@@ -10,7 +10,7 @@ const errorMiddleware: ErrorRequestHandler = (
   const status = err.status || 500;
   const { message } = err;
 
-  res.status(status).json({
+  res.status(status).send({
     message,
   });
 

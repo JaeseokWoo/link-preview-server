@@ -6,7 +6,10 @@ import {
   parseImg,
   parseDomain,
 } from '@src/common/parse';
-import urlValidator from '@src/common/validator/url';
+import {
+  urlValidator,
+  checkNodeFetchResponseStatus,
+} from '@src/common/validator';
 import BadRequestException from '@src/common/exceptions/bad-request.exception';
 
 class LinkPreviewService {
@@ -28,7 +31,14 @@ class LinkPreviewService {
     if (!urlValidator(url)) {
       throw new BadRequestException('not a valid url');
     }
-    const response = await this.request(url);
+
+    const response = checkNodeFetchResponseStatus(
+      await this.request(url)
+        .then(res => res)
+        .catch(err => {
+          throw new BadRequestException(`${err.message}`);
+        })
+    );
     const body = await response.text();
     const html = parser(body);
 
