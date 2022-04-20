@@ -8,7 +8,7 @@ import {
 } from '@src/common/parse';
 import {
   urlValidator,
-  // checkNodeFetchResponseStatus,
+  checkNodeFetchResponseStatus,
 } from '@src/common/validator';
 import BadRequestException from '@src/common/exceptions/bad-request.exception';
 
@@ -32,18 +32,13 @@ class LinkPreviewService {
       throw new BadRequestException('not a valid url');
     }
 
-    // const response = checkNodeFetchResponseStatus(
-    //   await this.request(url)
-    //     .then(res => res)
-    //     .catch(err => {
-    //       throw new BadRequestException(`${err.message}`);
-    //     })
-    // );
-    const response = await this.request(url)
-      .then(res => res)
-      .catch(err => {
-        throw new BadRequestException(`${err.message}`);
-      });
+    const response = checkNodeFetchResponseStatus(
+      await this.request(url)
+        .then(res => res)
+        .catch(err => {
+          throw new BadRequestException(`${err.message}`);
+        })
+    );
     const body = await response.text();
     const html = parser(body);
 
