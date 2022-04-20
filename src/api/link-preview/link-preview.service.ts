@@ -39,7 +39,11 @@ class LinkPreviewService {
     //       throw new BadRequestException(`${err.message}`);
     //     })
     // );
-    const response = await this.request(url);
+    const response = await this.request(url)
+      .then(res => res)
+      .catch(err => {
+        throw new BadRequestException(`${err.message}`);
+      });
     const body = await response.text();
     const html = parser(body);
 
@@ -48,7 +52,14 @@ class LinkPreviewService {
     const img = parseImg(html, url);
     const domain = parseDomain(html, url);
 
-    return { title, description, img, domain, requestUrl: requestedUrl };
+    return {
+      title,
+      description,
+      img,
+      domain,
+      requestUrl: requestedUrl,
+      test: response.ok,
+    };
   }
 }
 
