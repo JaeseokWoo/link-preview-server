@@ -18,7 +18,7 @@ export default function LinkPreview({ metadata }: { metadata: Metadata }) {
   const { title, description, domain, img, requestUrl } = metadata;
   return (
     <Card sx={{ maxWidth: 345, m: 2 }}>
-      <CardActionArea href={requestUrl}>
+      <CardActionArea href={requestUrl} target="_blank">
         <CardMedia
           component="img"
           height="140"
