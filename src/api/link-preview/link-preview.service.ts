@@ -22,12 +22,7 @@ class LinkPreviewService {
     this.request = fetch;
   }
 
-  async getMetadata(requestedUrl: string) {
-    const url =
-      requestedUrl.indexOf('://') === -1
-        ? `http://${requestedUrl}`
-        : requestedUrl;
-
+  async getMetadata(url: string) {
     if (!urlValidator(url)) {
       throw new BadRequestException('not a valid url');
     }
@@ -52,7 +47,7 @@ class LinkPreviewService {
       description,
       img,
       domain,
-      requestUrl: requestedUrl,
+      requestUrl: url,
     };
   }
 }
