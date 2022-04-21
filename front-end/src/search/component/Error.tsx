@@ -1,10 +1,6 @@
 import React from 'react';
-import Box from '@mui/material/Box';
+import Alert from '@mui/material/Alert';
 
 export default function Error({ error }: { error: Error }) {
-  return (
-    <Box sx={{ display: 'flex' }}>
-      <p>{error.message}</p>
-    </Box>
-  );
+  return <Alert severity="error">{error.message}</Alert>;
 }
