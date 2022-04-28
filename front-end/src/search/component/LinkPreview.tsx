@@ -5,7 +5,7 @@ import CardMedia from '@mui/material/CardMedia';
 import CardActionArea from '@mui/material/CardActionArea';
 import Typography from '@mui/material/Typography';
 
-import logo from '../../assets/logo.png';
+import noImg from '../../assets/noImg.png';
 
 export type Metadata = {
   title: string | null;
@@ -23,7 +23,7 @@ export default function LinkPreview({ metadata }: { metadata: Metadata }) {
         <CardMedia
           component="img"
           height="140"
-          image={img || logo}
+          image={img || noImg}
           alt={title || undefined}
         />
         <CardContent>
