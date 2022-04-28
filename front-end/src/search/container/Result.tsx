@@ -1,9 +1,9 @@
 import React from 'react';
+import useLinkPreview from 'use-link-preview';
 import LinkPreview from '../component/LinkPreview';
 import Response from '../component/Response';
 import Loading from '../component/Loading';
 import Error from '../component/Error';
-import useLinkPreview from '../../hook/useLinkPreview';
 
 export default function Result({ url }: { url: string }) {
   const { metadata, isLoading, isError } = useLinkPreview(url);

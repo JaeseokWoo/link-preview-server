@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { Metadata } from '../search/component/LinkPreview';
+import { Metadata } from 'use-link-preview';
 
 const LINK_PRECIEW_SERVER_API =
   'https://js-linkpreview.herokuapp.com/api/link-preview/?url=';

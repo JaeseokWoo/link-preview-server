@@ -1,12 +1,6 @@
 import React from 'react';
 import TextField from '@mui/material/TextField';
-
-export type Metadata = {
-  title: string | null;
-  description: string | null;
-  img: string | null;
-  domain: string | null;
-};
+import { Metadata } from 'use-link-preview';
 
 export default function Response({ metadata }: { metadata: Metadata }) {
   return (

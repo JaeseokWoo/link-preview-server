@@ -4,16 +4,8 @@ import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import CardActionArea from '@mui/material/CardActionArea';
 import Typography from '@mui/material/Typography';
-
+import { Metadata } from 'use-link-preview';
 import noImg from '../../assets/noImg.png';
-
-export type Metadata = {
-  title: string | null;
-  description: string | null;
-  img: string | null;
-  domain: string;
-  requestUrl: string;
-};
 
 export default function LinkPreview({ metadata }: { metadata: Metadata }) {
   const { title, description, domain, img, requestUrl } = metadata;
