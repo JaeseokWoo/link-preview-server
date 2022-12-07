@@ -6,6 +6,7 @@ async function startServer() {
   const app = new App([new LinkPreviewController(new LinkPreviewService())]);
 
   app.listen();
+  console.log('test');
 }
 
 startServer();
